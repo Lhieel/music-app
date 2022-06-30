@@ -51,5 +51,9 @@ const Container = styled.div`
         color: #49f585;
         font-size: 1.4rem;
         cursor: pointer;
+
+        &:hover {
+            background-color: #181818;
+        }
     }
 `;

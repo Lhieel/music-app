@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useStateProvider } from "../utils/StateProvider";
 import axios from "axios";
 import { useState } from "react";
+import {TbVolume, TbVolume2, TbVolumeOff} from "react-icons/tb"
 
 export default function Volume() {
     const [{token}]=useStateProvider();
@@ -24,10 +25,31 @@ export default function Volume() {
         return {
             backgroundSize: `${(value * 100) / MAX}% 100%`,
         };
-    };
+    }
+
+    /*const volumeIcon = function changeIcon(x) {
+        if(x = 1 &&) {
+            return <TbVolume3 />
+        } else {
+            value >= 50 ? <TbVolume /> : <TbVolume2 /> 
+        }
+    }*/
+
+    const volumeIcon = function changeIcon(x) {
+        if(x >= 50) {
+            return <TbVolume />
+        } else if ( x < 1) {
+            return <TbVolumeOff />
+        } else if(x < 50 && x > 1) {
+            return <TbVolume2 />
+        }
+    }
+     
 
     return(
         <Container>
+            <div className="volume">{volumeIcon(value)}</div>
+            
             <input type="range" min="0" max={MAX} onMouseUp={(e)=>setVolume(e)} onChange={(e) => setValue(e.target.value)} style={getBackgroundSize()} value={value} />
         </Container>
     )
@@ -63,5 +85,14 @@ const Container = styled.div`
 	box-shadow: none;
 	border: none;
 	background: transparent;
+    }
+
+    .volume {
+        width: 2rem;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        margin-right: 0.5rem;
+        color: #bebebed5;
     }
 `
