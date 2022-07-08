@@ -1,61 +1,61 @@
 import { reducerCases } from "./Constants";
 
 export const initialState = {
-    toke: null,
-    playlists: [],
-    userInfo: null,
-    selectedPlaylistId: "37i9dQZF1EVKuMoAJjoTIw",
-    selectedPlaylist: null,
-    currentlyPlaying: null,
-    playerState: false,
+  token: null,
+  userInfo: null,
+  playlists: [],
+  currentPlaying: null,
+  playerState: false,
+  selectedPlaylist: null,
+  selectedPlaylistId: "1snxenvIoBivNPz62eDtG0",
 };
 
-const reducer = (state,action) => {
-    switch (action.type) {
-        case reducerCases.SET_TOKEN : {
-            return {
-                ...state, 
-                token:action.token,
-            }
-        }
+const reducer = (state, action) => {
+  switch (action.type) {
+    case reducerCases.SET_TOKEN:
+      return {
+        ...state,
+        token: action.token,
+    };
 
-        case reducerCases.SET_PLAYLISTS : {
-            return {
-                ...state,
-                playlists:action.playlists,
-            }
-        }
+    case reducerCases.SET_USER:
+      return {
+        ...state,
+        userInfo: action.userInfo,
+    };
 
-        case reducerCases.SET_USER : {
-            return {
-                ...state,
-                userInfo: action.userInfo,
-            }
-        }
+    case reducerCases.SET_PLAYLISTS:
+      return {
+        ...state,
+        playlists: action.playlists,
+    };
 
-        case reducerCases.SET_PLAYLIST : {
-            return {
-                ...state,
-                selectedPlaylist:action.selectedPlaylist
-            }
-        }
+    case reducerCases.SET_PLAYING:
+      return {
+        ...state,
+        currentPlaying: action.currentPlaying,
+    };
 
-        case reducerCases.SET_PLAYING : {
-            return {
-                ...state,
-                currentlyPlaying: action.currentlyPlaying,
-            }
-        }
+    case reducerCases.SET_PLAYER_STATE:
+      return {
+        ...state,
+        playerState: action.playerState,
+    };
 
-        case reducerCases.SET_PLAYER_STATE : {
-            return {
-                ...state,
-                playerState: action.playerState,
-            }
-        }
+    case reducerCases.SET_PLAYLIST:
+      return {
+        ...state,
+        selectedPlaylist: action.selectedPlaylist,
+    };
 
-        default:
-            return state;
+    case reducerCases.SET_PLAYLIST_ID:
+      return {
+        ...state,
+        selectedPlaylistId: action.selectedPlaylistId,
+    };
+
+    default:
+      return state;
     }
 };
 
